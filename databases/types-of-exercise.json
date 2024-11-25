@@ -1,0 +1,14 @@
+[
+    {
+        "id" : 1,
+        "type" : "Echauffement"
+    },
+    {
+        "id" : 2,
+        "type" : "Chanson"
+    },
+    {
+        "id" : 3,
+        "type" : "Improvisation"
+    }
+]

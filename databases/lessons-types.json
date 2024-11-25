@@ -1,0 +1,26 @@
+[
+    {
+        "id" : 1,
+        "type" : "Guitare"
+    },
+    {
+        "id" : 2,
+        "type" : "Chant"
+    },
+    {
+        "id" : 3,
+        "type" : "Piano"
+    },
+    {
+        "id" : 4,
+        "type" : "Ecriture musicale"
+    },
+    {
+        "id" : 5,
+        "type" : "Guitare et chant"
+    },
+    {
+        "id" : 6,
+        "type" : "Inconnu"
+    }
+]

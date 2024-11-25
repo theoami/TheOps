@@ -1,0 +1,14 @@
+[
+    {
+        "id" : 1,
+        "givenname"  : "Daphné",
+        "surname" : "Dauvillier",
+        "title" :  "Mme"
+    },
+    {
+        "id" : 2,
+        "givenname"  : "Arnaud",
+        "surname" : "Delaunay",
+        "title" :  "M"
+    }
+]

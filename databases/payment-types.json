@@ -1,0 +1,22 @@
+[
+    {
+        "id" : 1,
+        "type" : "PayPal"
+    },
+    {
+        "id" : 2,
+        "type" : "Lydia"
+    },
+    {
+        "id" : 3,
+        "type" : "Espèces"
+    },
+    {
+        "id" : 4,
+        "type" : "Virement"
+    },
+    {
+        "id" : 5,
+        "type" : "Carte Cadeau eBuyClub (Carrefour)"
+    }
+]

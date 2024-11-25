@@ -1,0 +1,18 @@
+[
+    {
+        "id" : 1,
+        "type" : "Domicile"
+    },
+    {
+        "id" : 2,
+        "type" : "Chez le professeur"
+    },
+    {
+        "id" : 3,
+        "type" : "Visioconférence"
+    },
+    {
+        "id" : 4,
+        "type" : "Inconnu"
+    }
+]
