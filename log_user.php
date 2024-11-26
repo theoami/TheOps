@@ -114,11 +114,11 @@
     
             echo "<br/>";
             print_r( $_SESSION['user-informations']);
-            redirectToUrl('.\index.php');
+            redirectToUrl($_SERVER['DOCUMENT_ROOT'] . './index.php');
 
         }else{
 
-            redirectToUrl('.\login.html?bad-password');
+            redirectToUrl($_SERVER['DOCUMENT_ROOT'] . './login.html?bad-password');
 
         }
 
