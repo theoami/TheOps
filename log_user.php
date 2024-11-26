@@ -115,12 +115,12 @@
             echo "<br/>";
             print_r( $_SESSION['user-informations']);
             //redirectToUrl($_SERVER['DOCUMENT_ROOT'] . './index.php');
-            redirectToUrl('./index.php');
+            redirectToUrl('index.php');
 
         }else{
 
             //redirectToUrl($_SERVER['DOCUMENT_ROOT'] . './login.html?bad-password');
-            redirectToUrl('./login.html?bad-password');
+            redirectToUrl('login.html?bad-password');
 
         }
 
