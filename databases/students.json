@@ -3,6 +3,11 @@
         "id" : 1,
         "givenname"  : "Théo",
         "surname" : "Fleury",
-        "title" :  "M"
+        "title" :  "M",
+        "email" : "theo.fleury0175@gmail.com",
+        "birthday" : "25/02/1995",
+        "pseudo" : "Horslan",
+        "avatar" : "img/avatar.png",
+        "password" : "$2y$10$7BtK42PgEvZ/N/yJixJPbel1a6XqYCvsnz0P9Klr9apOIRJvu1XhK"
     }
 ]

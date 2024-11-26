@@ -3,12 +3,22 @@
         "id" : 1,
         "givenname"  : "Daphné",
         "surname" : "Dauvillier",
-        "title" :  "Mme"
+        "title" :  "Mme",
+        "email" : "daphne.dauvillier@gmail.com",
+        "birthday" : "",
+        "pseudo" : "",
+        "avatar" : "img/daphne.jpg",
+        "password" : "$6$IkoyjzLxvBadgfDs$0TYv94QYHMwOzb/f6gC1J1AuaRNNVgr732rajwr/LQIYlmcxRSybXvm8c2vLm6804cqmegrmTx4J/TEgA8TDM1"
     },
     {
         "id" : 2,
         "givenname"  : "Arnaud",
         "surname" : "Delaunay",
-        "title" :  "M"
+        "title" :  "M",
+        "email" : "arnaud.yamaha.music@free.fr",
+        "birthday" : "",
+        "pseudo" : "",
+        "avatar" : "img/avatar.png",
+        "password" : "$6$e89CfN60/HwJKgT1$tiRS6Vtun5q2QtMNHVh6T3bzLI2FmL9ozy6NJMtLxuoDhfpI5LJrPnxMW.J3X5iW.JIunjfRGCbY.KZ4AmUsy."
     }
 ]
