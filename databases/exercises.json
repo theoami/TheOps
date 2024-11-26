@@ -1,0 +1,14 @@
+[
+    {
+        "id" : "1",
+        "exercise-name" : "Araignée",
+        "types-of-exercise-id" : "1",
+        "description" : "Explications : _ On met les doigts 1 à 4 sur la corde 6 et sur les cases de 1 à 4 puis on descends sur la corde 5, l'auriculaire et les doigts suivants un à un sans décoller les autres de la corde précédente"
+    },
+    {
+        "id" : "2",
+        "exercise-name" : "Escalier",
+        "types-of-exercise-id" : "1",
+        "description" : "Explications : _ On fait toutes les cases de 1 à 4 et toutes les cordes de 6 à 1. _ Puis on décale d' une case et on recommence jusqu' à la fin du manche."
+    }
+]

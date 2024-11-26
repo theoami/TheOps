@@ -105,10 +105,13 @@
             $_SESSION['user-informations'] = $user;
     
             if( $user_type == 'teacher' ){
+                $_SESSION['user-type-en'] = "teacher";
                 $_SESSION['user-type'] = "Professeur";
             }elseif( $user_type == 'student' ){
+                $_SESSION['user-type-en'] = "student";
                 $_SESSION['user-type'] = "Élève";
             }else{
+                $_SESSION['user-type-en'] = "";
                 $_SESSION['user-type'] = "";
             }
     

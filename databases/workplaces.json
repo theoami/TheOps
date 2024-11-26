@@ -1,18 +1,22 @@
 [
     {
         "id" : 1,
-        "type" : "Domicile"
+        "type" : "Domicile",
+        "default" : false
     },
     {
         "id" : 2,
-        "type" : "Chez le professeur"
+        "type" : "Chez le professeur",
+        "default" : true
     },
     {
         "id" : 3,
-        "type" : "Visioconférence"
+        "type" : "Visioconférence",
+        "default" : false
     },
     {
         "id" : 4,
-        "type" : "Inconnu"
+        "type" : "Inconnu",
+        "default" : false
     }
 ]

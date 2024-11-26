@@ -80,7 +80,7 @@
 
     //endregion TYPES OF EXERCISE
 
-    //region TYPES OF EXERCISE
+    //region WORKPLACES
 
         // Read the JSON file
         $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/workplaces.json");
@@ -98,9 +98,9 @@
             die('Error decoding the JSON file');
         }
 
-    //endregion TYPES OF EXERCISE
+    //endregion WORKPLACES
 
-    //region TYPES OF EXERCISE
+    //region PAYMENT TYPES
 
         // Read the JSON file
         $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/payment-types.json");
@@ -118,6 +118,46 @@
             die('Error decoding the JSON file');
         }
 
-    //endregion TYPES OF EXERCISE
+    //endregion PAYMENT TYPES
+
+    //region EXERCISES
+
+        // Read the JSON file
+        $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/exercises.json");
+        
+        // Check if the file was read successfully
+        if ($json === false) {
+            die('Error reading the JSON file');
+        }
+
+        // Decode the JSON file
+        $json_exercises = json_decode($json, true); 
+
+        // Check if the JSON was decoded successfully
+        if ($json_exercises === null) {
+            die('Error decoding the JSON file');
+        }
+
+    //endregion EXERCISES
+
+    //region LESSONS DURATIONS
+
+        // Read the JSON file
+        $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/lessons-durations.json");
+        
+        // Check if the file was read successfully
+        if ($json === false) {
+            die('Error reading the JSON file');
+        }
+
+        // Decode the JSON file
+        $json_lessons_durations = json_decode($json, true); 
+
+        // Check if the JSON was decoded successfully
+        if ($json_lessons_durations === null) {
+            die('Error decoding the JSON file');
+        }
+
+    //endregion LESSONS DURATIONS
 
 ?>

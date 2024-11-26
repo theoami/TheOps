@@ -22,49 +22,73 @@
             <li><a href="font_awesome.html">Font Awesome</a></li>
         </ul>
         </li>
-        <li class="sub-menu hide disabled_theo">
-        <a href="javascript:;">
-            <i class="fa fa-cogs"></i>
-            <span>Components</span>
+        <li class="sub-menu">
+            <a href="javascript:;">
+                <i class="fa fa-cogs"></i>
+                <span>Configuration</span>
             </a>
-        <ul class="sub">
-            <li><a href="grids.html">Grids</a></li>
-            <li><a href="calendar.html">Calendar</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="todo_list.html">Todo List</a></li>
-            <li><a href="dropzone.html">Dropzone File Upload</a></li>
-            <li><a href="inline_editor.html">Inline Editor</a></li>
-            <li><a href="file_upload.html">Multiple File Upload</a></li>
-        </ul>
+            <ul class="sub">
+                <li><a href="types_of_exercise.php">Types d'exercice</a></li>
+                <li><a href="lessons_types.php">Types de leçons</a></li>
+                <li><a href="payment_types.php">Types de paiement</a></li>
+                <li><a href="workplaces.php">Lieux des cours</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu">
+            <a href="javascript:;">
+                <i class="fa fa-th"></i>
+                <span>Cours</span>
+            </a>
+            <ul class="sub">
+                <li><a href="lessons.php">Cours</a></li>
+                <li><a href="warm_ups.php">Echauffements</a></li>
+                <li><a href="improvisations.php">Improvisations</a></li>
+                <li><a href="exercises.php">Exercices</a></li>
+            </ul>
         </li>
         <li class="sub-menu hide disabled_theo">
-        <a href="javascript:;">
-            <i class="fa fa-book"></i>
-            <span>Extra Pages</span>
+            <a href="javascript:;">
+                <i class="fa fa-cogs"></i>
+                <span>Components</span>
             </a>
-        <ul class="sub">
-            <li><a href="blank.html">Blank Page</a></li>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="lock_screen.html">Lock Screen</a></li>
-            <li><a href="profile.html">Profile</a></li>
-            <li><a href="invoice.html">Invoice</a></li>
-            <li><a href="pricing_table.html">Pricing Table</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="404.html">404 Error</a></li>
-            <li><a href="500.html">500 Error</a></li>
-        </ul>
+            <ul class="sub">
+                <li><a href="grids.html">Grids</a></li>
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="todo_list.html">Todo List</a></li>
+                <li><a href="dropzone.html">Dropzone File Upload</a></li>
+                <li><a href="inline_editor.html">Inline Editor</a></li>
+                <li><a href="file_upload.html">Multiple File Upload</a></li>
+            </ul>
         </li>
         <li class="sub-menu hide disabled_theo">
-        <a href="javascript:;">
-            <i class="fa fa-tasks"></i>
-            <span>Forms</span>
+            <a href="javascript:;">
+                <i class="fa fa-book"></i>
+                <span>Extra Pages</span>
             </a>
-        <ul class="sub">
-            <li><a href="form_component.html">Form Components</a></li>
-            <li><a href="advanced_form_components.html">Advanced Components</a></li>
-            <li><a href="form_validation.html">Form Validation</a></li>
-            <li><a href="contactform.html">Contact Form</a></li>
-        </ul>
+            <ul class="sub">
+                <li><a href="blank.html">Blank Page</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="lock_screen.html">Lock Screen</a></li>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="invoice.html">Invoice</a></li>
+                <li><a href="pricing_table.html">Pricing Table</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="404.html">404 Error</a></li>
+                <li><a href="500.html">500 Error</a></li>
+            </ul>
+        </li>
+        <li class="sub-menu hide disabled_theo">
+            <a href="javascript:;">
+                <i class="fa fa-tasks"></i>
+                <span>Forms</span>
+            </a>
+            <ul class="sub">
+                <li><a href="form_component.html">Form Components</a></li>
+                <li><a href="advanced_form_components.html">Advanced Components</a></li>
+                <li><a href="form_validation.html">Form Validation</a></li>
+                <li><a href="contactform.html">Contact Form</a></li>
+            </ul>
         </li>
         <li class="sub-menu hide disabled_theo">
         <a href="javascript:;">
@@ -78,10 +102,10 @@
         </ul>
         </li>
         <li class="hide disabled_theo">
-        <a href="inbox.html">
-            <i class="fa fa-envelope"></i>
-            <span>Mail </span>
-            <span class="label label-theme pull-right mail-info">2</span>
+            <a href="inbox.html">
+                <i class="fa fa-envelope"></i>
+                <span>Mail </span>
+                <span class="label label-theme pull-right mail-info">2</span>
             </a>
         </li>
         <li class="sub-menu hide disabled_theo">
@@ -107,9 +131,9 @@
         </ul>
         </li>
         <li class="hide disabled_theo">
-        <a href="google_maps.html">
-            <i class="fa fa-map-marker"></i>
-            <span>Google Maps </span>
+            <a href="google_maps.html">
+                <i class="fa fa-map-marker"></i>
+                <span>Google Maps </span>
             </a>
         </li>
     </ul>
