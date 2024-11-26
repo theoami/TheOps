@@ -115,12 +115,32 @@
             echo "<br/>";
             print_r( $_SESSION['user-informations']);
             //redirectToUrl($_SERVER['DOCUMENT_ROOT'] . './index.php');
-            redirectToUrl('index.php');
+            echo $_SERVER['HTTP_HOST'] . '/index.php';
+
+            if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+                
+                redirectToUrl('https://' . $_SERVER['HTTP_HOST'] . '/index.php');
+
+            }else{
+
+                redirectToUrl('http://' . $_SERVER['HTTP_HOST'] . '/index.php');
+
+            }
 
         }else{
 
             //redirectToUrl($_SERVER['DOCUMENT_ROOT'] . './login.html?bad-password');
-            redirectToUrl('login.html?bad-password');
+            echo $_SERVER['HTTP_HOST'] . '/login.html?bad-password';
+
+            if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+                
+                redirectToUrl('https://' . $_SERVER['HTTP_HOST'] . '/login.html?bad-password');
+
+            }else{
+
+                redirectToUrl('http://' . $_SERVER['HTTP_HOST'] . '/login.html?bad-password');
+
+            }
 
         }
 
