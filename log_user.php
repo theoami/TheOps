@@ -115,14 +115,17 @@
             echo "<br/>";
             print_r( $_SESSION['user-informations']);
             //redirectToUrl($_SERVER['DOCUMENT_ROOT'] . './index.php');
-            echo $_SERVER['HTTP_HOST'] . '/index.php';
+
+            echo "<br/>";
 
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
                 
+                echo 'https://' . $_SERVER['HTTP_HOST'] . '/index.php';
                 redirectToUrl('https://' . $_SERVER['HTTP_HOST'] . '/index.php');
 
             }else{
-
+                
+                echo 'http://' . $_SERVER['HTTP_HOST'] . '/index.php';
                 redirectToUrl('http://' . $_SERVER['HTTP_HOST'] . '/index.php');
 
             }
@@ -130,15 +133,18 @@
         }else{
 
             //redirectToUrl($_SERVER['DOCUMENT_ROOT'] . './login.html?bad-password');
-            echo $_SERVER['HTTP_HOST'] . '/login.html?bad-password';
+            
+            echo "<br/>";
 
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
-                
-                redirectToUrl('https://' . $_SERVER['HTTP_HOST'] . '/login.html?bad-password');
+
+                echo 'https://' . $_SERVER['HTTP_HOST'] . '/login.php?bad-password';
+                redirectToUrl('https://' . $_SERVER['HTTP_HOST'] . '/login.php?bad-password');
 
             }else{
 
-                redirectToUrl('http://' . $_SERVER['HTTP_HOST'] . '/login.html?bad-password');
+                echo 'http://' . $_SERVER['HTTP_HOST'] . '/login.php?bad-password';
+                redirectToUrl('http://' . $_SERVER['HTTP_HOST'] . '/login.php?bad-password');
 
             }
 
