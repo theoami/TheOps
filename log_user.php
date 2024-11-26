@@ -3,7 +3,7 @@
     //echo $_SERVER['SERVER_NAME'];
     //echo $_SERVER['DOCUMENT_ROOT'];
 
-    require_once($_SERVER['DOCUMENT_ROOT'] . "\databases\access.php");
+    require_once($_SERVER['DOCUMENT_ROOT'] . "/databases/access.php");
 
     function function_alert($message) {
     

@@ -251,7 +251,7 @@
         MAIN SIDEBAR MENU
         *********************************************************************************************************************************************************** -->
     <!--sidebar start-->
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . "\aside.php"); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/aside.php"); ?>
     <!--sidebar end-->
     <!-- **********************************************************************************************************************************************************
         MAIN CONTENT
@@ -681,7 +681,7 @@
     </section>
     <!--main content end-->
     <!--footer start-->
-    <?php require_once($_SERVER['DOCUMENT_ROOT'] . "\\footer.php"); ?>
+    <?php require_once($_SERVER['DOCUMENT_ROOT'] . "/footer.php"); ?>
     <!--footer end-->
   </section>
   <!-- js placed at the end of the document so the pages load faster -->
