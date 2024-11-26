@@ -121,11 +121,13 @@
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
                 
                 echo 'https://' . $_SERVER['HTTP_HOST'] . '/index.php';
+                ob_start();
                 redirectToUrl('https://' . $_SERVER['HTTP_HOST'] . '/index.php');
 
             }else{
                 
                 echo 'http://' . $_SERVER['HTTP_HOST'] . '/index.php';
+                ob_start();
                 redirectToUrl('http://' . $_SERVER['HTTP_HOST'] . '/index.php');
 
             }
@@ -139,11 +141,13 @@
             if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
 
                 echo 'https://' . $_SERVER['HTTP_HOST'] . '/login.php?bad-password';
+                ob_start();
                 redirectToUrl('https://' . $_SERVER['HTTP_HOST'] . '/login.php?bad-password');
 
             }else{
 
                 echo 'http://' . $_SERVER['HTTP_HOST'] . '/login.php?bad-password';
+                ob_start();
                 redirectToUrl('http://' . $_SERVER['HTTP_HOST'] . '/login.php?bad-password');
 
             }
