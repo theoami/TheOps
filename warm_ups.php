@@ -46,6 +46,30 @@
             <form action="add.php" method="POST" class="form-horizontal style-form">
                 
               <div class="form-group ">
+                  <label class="control-label col-md-2">Cours</label>
+                  <div class="col-md-6 col-xs-11">
+                    <select class="form-control" required name="lesson" id="lesson" >
+<?php 
+                      foreach($json_lessons as $item) {
+
+                        $workplaces = array_column($json_workplaces, 'id');
+                        $teachers = array_column($json_teachers, 'id');
+                        $students = array_column($json_students, 'id');
+    
+                        $found_workplace = array_search(strtolower($item['workplace']), array_map('strtolower',$workplaces));
+                        $found_teacher = array_search(strtolower($item['teacher']), array_map('strtolower',$teachers));
+                        $found_student = array_search(strtolower($item['student']), array_map('strtolower',$students));
+
+?>
+                        <option value="<?php echo $item["id"]; ?>" required ><?php echo $item["lesson-date"]; ?> - <?php echo $json_workplaces[$found_workplace]["type"]; ?> - <?php echo $json_teachers[$found_teacher]["givenname"]; ?> <?php echo $json_teachers[$found_teacher]["surname"]; ?> (<?php echo $json_teachers[$found_teacher]["title"]; ?>) - <?php echo $json_students[$found_student]["givenname"];?> <?php echo $json_students[$found_student]["surname"];?> (<?php echo $json_students[$found_student]["title"];?>)</option>
+<?php           
+                      }
+?>
+                    </select>
+                  </div>
+              </div>
+
+              <div class="form-group ">
                   <label class="control-label col-md-2">Élève</label>
                   <div class="col-md-3 col-xs-11">
 

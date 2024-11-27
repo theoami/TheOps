@@ -37,13 +37,13 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Leçons</h3>
+        <h3><i class="fa fa-angle-right"></i> Echauffements</h3>
 
         <div class="row mt">
           
           <div class="col-lg-12">
             <div class="form-panel">
-            <form action="add_lesson.php" method="POST" class="form-horizontal style-form">
+            <form action="add.php" method="POST" class="form-horizontal style-form">
                 
               <div class="form-group ">
                   <label class="control-label col-md-2">Élève</label>
@@ -82,6 +82,30 @@
               </div>
 
               <div class="form-group">
+
+                <label class="control-label col-md-2">Exercices</label>
+
+                <div class="col-md-3 col-xs-11">
+
+<?php 
+                foreach($json_exercises as $item) {
+
+                  if( $item['types-of-exercise-id'] == 1 ){
+?>
+
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" name="exercises[]" id="exercise_<?php echo $item['id'];?>" value="<?php echo $item['id'];?>"> <?php echo $item['exercise-name'];?>
+                      </label>
+                    </div>
+<?php           
+                  }
+                }
+?>
+                </div>
+              </div>
+
+              <div class="form-group">
                 
                 <label class="control-label col-md-2">Lieu</label>
                 <div class="col-md-3 col-xs-11">
@@ -110,9 +134,9 @@
               </div>
       
                 <div class="form-group">
-                    <label class="control-label col-md-2">Date</label>
+                    <label class="control-label col-md-2">Date de l'échauffement</label>
                     <div class="col-md-3 col-xs-11">
-                      <input required class="form-control form-control-inline input-medium default-date-picker" name="lesson-date" id="lesson-date" size="16" type="text" value="<?php echo date("m-d-Y"); ?>" >
+                      <input required class="form-control form-control-inline input-medium default-date-picker" name="exercise-date" id="exercise-date" size="16" type="text" value="<?php echo date("m-d-Y"); ?>" >
                     </div>
                 </div>
                 
@@ -151,38 +175,6 @@
                 </div>
                 
                 <div class="form-group">
-                  <label class="control-label col-md-2">Types de leçon</label>
-                  <div class="col-md-3 col-xs-11">
-                    <select class="form-control" required name="lesson-type" id="lesson-type" >
-<?php 
-
-                      foreach($json_lessons_types as $item) {
-?>
-                        <option value="<?php echo $item["id"]; ?>" required ><?php echo $item["type"]; ?></option>
-<?php           
-                      }
-?>
-                    </select>
-                  </div>
-                </div>
-                
-                <div class="form-group">
-                  <label class="control-label col-md-2">Durée</label>
-                  <div class="col-md-3 col-xs-11">
-                    <select class="form-control" required name="lesson-duration" id="lesson-duration" >
-<?php 
-
-                      foreach($json_lessons_durations as $item) {
-?>
-                        <option value="<?php echo $item["id"]; ?>" required ><?php echo $item["duration"]; ?></option>
-<?php           
-                      }
-?>
-                    </select>
-                  </div>
-                </div>
-                
-                <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
                     <button class="btn btn-theme" type="submit">Ajout</button>
                   </div>
@@ -200,7 +192,7 @@
     //region PAYMENT TYPES
 
         // Read the JSON file
-        $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/lessons.json");
+        $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/activities.json");
         
         // Check if the file was read successfully
         if ($json === false) {
@@ -208,10 +200,10 @@
         }
 
         // Decode the JSON file
-        $json_lessons = json_decode($json, true); 
+        $json_activities = json_decode($json, true); 
 
         // Check if the JSON was decoded successfully
-        if ($json_lessons === null) {
+        if ($json_activities === null) {
             die('Error decoding the JSON file');
         }
 
@@ -229,38 +221,36 @@
                   <thead>
                     <tr>
                       <th>Date</th>
+                      <th>Exercice</th>
                       <th>Lieu</th>
                       <th>Professeur</th>
                       <th>Élève</th>
-                      <th>Type de leçon</th>
-                      <th>Durée</th>
                       <th>Commentaires</th>
                     </tr>
                   </thead>
                   <tbody>
   <?php 
-                  foreach($json_lessons as $item) {
+                  foreach($json_activities as $item) {
                     
                     $workplaces = array_column($json_workplaces, 'id');
                     $teachers = array_column($json_teachers, 'id');
                     $students = array_column($json_students, 'id');
                     $exercises = array_column($json_exercises, 'id');
-                    $lesson_durations = array_column($json_lessons_durations, 'id');
-                    $lesson_types = array_column($json_lessons_types, 'id');
 
                     $found_workplace = array_search(strtolower($item['workplace']), array_map('strtolower',$workplaces));
+
                     $found_teacher = array_search(strtolower($item['teacher']), array_map('strtolower',$teachers));
+
                     $found_student = array_search(strtolower($item['student']), array_map('strtolower',$students));
-                    $found_duration = array_search(strtolower($item['duration']), array_map('strtolower',$lesson_durations));
-                    $found_lesson_type = array_search(strtolower($item['lesson-type']), array_map('strtolower',$lesson_types));
+
+                    $found_exercise = array_search(strtolower($item['exercise']), array_map('strtolower',$exercises));
   ?>
                     <tr>
-                        <td><?php echo $item["lesson-date"]; ?></td>
+                        <td><?php echo $item["exercise-date"]; ?></td>
+                        <td><?php echo $json_exercises[$found_exercise]["exercise-name"]; ?></td>
                         <td><?php echo $json_workplaces[$found_workplace]["type"]; ?></td>
                         <td><?php echo $json_teachers[$found_teacher]["givenname"]; ?> <?php echo $json_teachers[$found_teacher]["surname"]; ?></td>
                         <td><?php echo $json_students[$found_student]["givenname"]; ?> <?php echo $json_students[$found_student]["surname"]; ?></td>
-                        <td><?php echo $json_lessons_types[$found_lesson_type]["type"]; ?></td>
-                        <td><?php echo $json_lessons_durations[$found_duration]["duration"]; ?></td>
                         <td><?php echo $item["comment"]; ?></td>
                     </tr>
   <?php           

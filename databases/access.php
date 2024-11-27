@@ -160,4 +160,24 @@
 
     //endregion LESSONS DURATIONS
 
+    //region LESSONS
+
+        // Read the JSON file
+        $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/lessons.json");
+        
+        // Check if the file was read successfully
+        if ($json === false) {
+            die('Error reading the JSON file');
+        }
+
+        // Decode the JSON file
+        $json_lessons = json_decode($json, true); 
+
+        // Check if the JSON was decoded successfully
+        if ($json_lessons === null) {
+            die('Error decoding the JSON file');
+        }
+
+    //endregion LESSONS
+
 ?>

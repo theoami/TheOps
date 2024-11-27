@@ -21,11 +21,22 @@
 
     $json_activities = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/lessons.json");    
     $tempArray = json_decode($json_activities);
+    $tempArray1 = json_decode($json_activities,true);
 
-    $lesson = array(  "workplace"=>$_POST["workplaces"],
+    $max_value = 0;
+    foreach($tempArray as $key => $value) {
+        if($value->id > $max_value){
+            $max_value = $value->id;
+        }
+    }
+
+    $lastID = $max_value + 1;
+
+    $lesson = array(    
+                        "id"=>$lastID,
+                        "workplace"=>$_POST["workplaces"],
                         "lesson-date"=>$_POST["lesson-date"],
                         "teacher"=>$_POST["teacher"],
-
                         "comment"=>"",
                         "student"=>$_POST["student"],
                         "lesson-type"=>$_POST["lesson-type"],
