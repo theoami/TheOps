@@ -47,32 +47,12 @@
 
               <form action="process_form.php" method="POST" class="form-horizontal style-form">
 
-                <input type="hidden" value="sheet-lesson" id="form-type" name="form-type" />
+                <input type="hidden" value="sheet-song" id="form-type" name="form-type" />
                   
                 <div class="form-group ">
-                    <label class="control-label col-md-2">Cours</label>
+                    <label class="control-label col-md-2">Chanson</label>
                     <div class="col-md-6 col-xs-11">
-                      <select class="form-control" required name="lesson" id="lesson" >
-  <?php 
-                        foreach($json_lessons as $item) {
-
-                          $workplaces = array_column($json_workplaces, 'id');
-                          $teachers = array_column($json_teachers, 'id');
-                          $students = array_column($json_students, 'id');
-                          $lesson_types = array_column($json_lessons_types, 'id');
-                          $lesson_durations = array_column($json_lessons_durations, 'id');
-      
-                          $found_workplace = array_search(strtolower($item['workplace']), array_map('strtolower',$workplaces));
-                          $found_teacher = array_search(strtolower($item['teacher']), array_map('strtolower',$teachers));
-                          $found_student = array_search(strtolower($item['student']), array_map('strtolower',$students));
-                          $found_lesson_type = array_search(strtolower($item['lesson-type']), array_map('strtolower',$lesson_types));
-                          $found_lesson_duration = array_search(strtolower($item['duration']), array_map('strtolower',$lesson_durations));
-
-  ?>
-                          <option value="<?php echo $item["id"]; ?>" required ><?php echo $item["lesson-date"]; ?> - <?php echo $json_workplaces[$found_workplace]["type"]; ?> - <?php echo $json_teachers[$found_teacher]["givenname"]; ?> <?php echo $json_teachers[$found_teacher]["surname"]; ?> (<?php echo $json_teachers[$found_teacher]["title"]; ?>) - <?php echo $json_students[$found_student]["givenname"];?> <?php echo $json_students[$found_student]["surname"];?> (<?php echo $json_students[$found_student]["title"];?>) - <?php echo $json_lessons_types[$found_lesson_type]["type"];?> - <?php echo $json_lessons_durations[$found_lesson_duration]["duration"];?></option>
-  <?php           
-                        }
-  ?>
+                      <select class="form-control" required name="song" id="song" >                    
                       </select>
                     </div>
                 </div>
@@ -117,39 +97,16 @@
                    
 ?>
               
-            <p><strong>ID de la leçon :</strong> <?php echo $item["id"]; ?></p>
-            <p><strong>Date de la leçon :</strong> <?php echo $item["lesson-date"]; ?></p>
-            <p><strong>Lieu :</strong> <?php echo $json_workplaces[$found_workplace]["type"]; ?></p>
-            <p><strong>Professeur :</strong> <?php echo $json_teachers[$found_teacher]["givenname"]; ?> <?php echo $json_teachers[$found_teacher]["surname"]; ?> (<?php echo $json_teachers[$found_teacher]["title"]; ?>)</p>
-            <p><strong>Élève :</strong> <?php echo $json_students[$found_student]["givenname"];?> <?php echo $json_students[$found_student]["surname"];?> (<?php echo $json_students[$found_student]["title"];?>)</p>
-            <p><strong>Type :</strong> <?php echo $json_lessons_types[$found_lesson_type]["type"]; ?></p>
-            <p><strong>Durée :</strong> <?php echo $json_lessons_durations[$found_lesson_duration]["duration"]; ?></p>
+            <p><strong>ID de la chanson :</strong> 1</p>
+            <p><strong>Chanson :</strong> Santiano</p>
+            <p><strong>Chanteur :</strong> Hugues Auffray</p>
+            <p><strong>Partition :</strong></p>
+            <p style="color:red;" >Non disponible</p>
+            <p><strong>Accords :</strong></p>
+            <p style="color:red;" >Non disponible</p>
 
-            <p><strong>Echauffements :</strong></p>
-
-<?php
-
-            foreach( $json_activities as $activity ) {
-
-              if( $activity["lesson"] == $item["id"] ){
-
-                $found_exercise = array_search(strtolower($activity["exercise"]), array_map('strtolower',$exercises));
-              
-?>               
-                <p> _ <?php echo $json_exercises[$found_exercise]["exercise-name"]; ?></p>
-<?php
-              }
-
-            }
-
-?>
-            <p><strong>Improvisations :</strong></p>
-
-            <p>Pas d'improvisation</p>
-
-            <p><strong>Chansons :</strong></p>
-
-            <p>Pas de chanson</p>
+            <p><strong>Conseils (cours par cours) :</strong></p>
+            <p style="color:red;" >Non disponible</p>
 
             </div>
 

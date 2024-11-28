@@ -185,12 +185,6 @@
                     </select>
                   </div>
                 </div>
-                
-                <div class="form-group">
-                  <div class="col-lg-offset-2 col-lg-10">
-                    <button class="btn btn-theme" type="submit">Ajout</button>
-                  </div>
-                </div>
 
                 <div class="form-group">
 
@@ -213,6 +207,12 @@
                     }
                   }
   ?>
+                  </div>
+                </div>
+                
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Ajout</button>
                   </div>
                 </div>
                   

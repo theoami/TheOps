@@ -180,4 +180,24 @@
 
     //endregion LESSONS
 
+    //region ACTIVITIES
+
+        // Read the JSON file
+        $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/activities.json");
+        
+        // Check if the file was read successfully
+        if ($json === false) {
+            die('Error reading the JSON file');
+        }
+
+        // Decode the JSON file
+        $json_activities = json_decode($json, true); 
+
+        // Check if the JSON was decoded successfully
+        if ($json_activities === null) {
+            die('Error decoding the JSON file');
+        }
+
+    //endregion ACTIVITIES
+
 ?>

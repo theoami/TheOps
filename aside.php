@@ -5,7 +5,7 @@
         <p class="centered"><a href="profile.html"><img src="<?php echo $_SESSION['user-informations']['avatar']; ?>" class="img-circle" width="80"></a></p>
         <h5 class="centered"><?php echo $_SESSION['user-informations']['givenname']; ?> <?php echo $_SESSION['user-informations']['surname']; ?><br/> <?php echo $_SESSION['user-type']; ?></h5>
         <li class="mt">
-            <a class="active" href="index.php">
+            <a class="" href="index.php">
                 <i class="fa fa-dashboard"></i>
                 <span>Tableau de bord</span>
             </a>
@@ -22,10 +22,70 @@
             <li><a href="font_awesome.html">Font Awesome</a></li>
         </ul>
         </li>
+        <li class="">
+            <a class="" href="types_of_exercise.php">
+                <i class="fa fa-cogs"></i>
+                <span>Config - Types d'exercice</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="lessons_types.php">
+                <i class="fa fa-cogs"></i>
+                <span>Config - Types de leçons</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="payment_types.php">
+                <i class="fa fa-cogs"></i>
+                <span>Config - Types de paiement</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="workplaces.php">
+                <i class="fa fa-cogs"></i>
+                <span>Config - Lieux des cours</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="lessons.php">
+                <i class="fa fa-th"></i>
+                <span>Cours - Cours</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="warm_ups.php">
+                <i class="fa fa-th"></i>
+                <span>Cours - Echauffements</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="improvisations.php">
+                <i class="fa fa-th"></i>
+                <span>Cours - Improvisations</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="exercises.php">
+                <i class="fa fa-th"></i>
+                <span>Cours - Exercices</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="sheets.php">
+                <i class="fa fa-th"></i>
+                <span>Cours - Fiches de cours</span>
+            </a>
+        </li>
+        <li class="">
+            <a class="" href="sheets_songs.php">
+                <i class="fa fa-th"></i>
+                <span>Cours - Fiches de chansons</span>
+            </a>
+        </li>
         <li class="sub-menu">
             <a href="javascript:;">
                 <i class="fa fa-cogs"></i>
-                <span>Configuration</span>
+                <span>Configuration (DEV EC)</span>
             </a>
             <ul class="sub">
                 <li><a href="types_of_exercise.php">Types d'exercice</a></li>
@@ -33,11 +93,11 @@
                 <li><a href="payment_types.php">Types de paiement</a></li>
                 <li><a href="workplaces.php">Lieux des cours</a></li>
             </ul>
-        </li>
+        </li>        
         <li class="sub-menu">
             <a href="javascript:;">
                 <i class="fa fa-th"></i>
-                <span>Cours</span>
+                <span>Cours (DEV EC)</span>
             </a>
             <ul class="sub">
                 <li><a href="lessons.php">Cours</a></li>
@@ -46,12 +106,6 @@
                 <li><a href="exercises.php">Exercices</a></li>
                 <li><a href="sheets.php">Fiches</a></li>
             </ul>
-        </li>
-        <li class="">
-            <a class="active" href="sheets.php">
-                <i class="fa fa-dashboard"></i>
-                <span>Cours - Fiches</span>
-            </a>
         </li>
         <li class="sub-menu hide disabled_theo">
             <a href="javascript:;">
