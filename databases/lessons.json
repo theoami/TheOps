@@ -12,47 +12,17 @@
     {
         "id": 2,
         "workplace": "2",
-        "lesson-date": "27-11-2024",
+        "lesson-date": "28-11-2024",
         "teacher": "1",
         "comment": "",
-        "student": "1",
-        "lesson-type": "1",
-        "duration": "1"
-    },
-    {
-        "id": 4,
-        "workplace": "2",
-        "lesson-date": "27-11-2024",
-        "teacher": "1",
-        "comment": "",
-        "student": "1",
+        "student": "2",
         "lesson-type": "1",
         "duration": "1"
     },
     {
         "id": 3,
         "workplace": "2",
-        "lesson-date": "27-11-2024",
-        "teacher": "1",
-        "comment": "",
-        "student": "1",
-        "lesson-type": "1",
-        "duration": "1"
-    },
-    {
-        "id": 5,
-        "workplace": "2",
-        "lesson-date": "27-11-2024",
-        "teacher": "1",
-        "comment": "",
-        "student": "1",
-        "lesson-type": "1",
-        "duration": "1"
-    },
-    {
-        "id": 6,
-        "workplace": "2",
-        "lesson-date": "27-11-2024",
+        "lesson-date": "28-11-2024",
         "teacher": "1",
         "comment": "",
         "student": "1",

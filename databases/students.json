@@ -9,5 +9,16 @@
         "pseudo" : "Horslan",
         "avatar" : "img/avatar.png",
         "password" : "$2y$10$7BtK42PgEvZ/N/yJixJPbel1a6XqYCvsnz0P9Klr9apOIRJvu1XhK"
+    },
+    {
+        "id" : 2,
+        "givenname"  : "Marie",
+        "surname" : "Fleury",
+        "title" :  "Mme",
+        "email" : "marie.fleury0175@gmail.com",
+        "birthday" : "29/01/2001",
+        "pseudo" : "Minifleury",
+        "avatar" : "img/avatar_women.png",
+        "password" : "$2y$10$7BtK42PgEvZ/N/yJixJPbel1a6XqYCvsnz0P9Klr9apOIRJvu1XhK"
     }
 ]

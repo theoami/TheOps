@@ -1,18 +1,22 @@
 [
     {
-        "workplace": "2",
-        "exercise-date": "26-11-2024",
-        "teacher": "1",
+        "lesson": "1",
         "exercise": "1",
-        "comment": "",
-        "student": "1"
+        "comment": ""
     },
     {
-        "workplace": "2",
-        "exercise-date": "26-11-2024",
-        "teacher": "1",
+        "lesson": "1",
         "exercise": "2",
-        "comment": "",
-        "student": "1"
+        "comment": ""
+    },
+    {
+        "lesson": 3,
+        "exercise": 1,
+        "comment": ""
+    },
+    {
+        "lesson": 3,
+        "exercise": 2,
+        "comment": ""
     }
 ]

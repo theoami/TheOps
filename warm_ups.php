@@ -43,7 +43,9 @@
           
           <div class="col-lg-12">
             <div class="form-panel">
-            <form action="add.php" method="POST" class="form-horizontal style-form">
+            <form action="process_form.php" method="POST" class="form-horizontal style-form">
+
+              <input type="hidden" value="warm-up" id="form-type" name="form-type" />
                 
               <div class="form-group ">
                   <label class="control-label col-md-2">Cours</label>
@@ -55,53 +57,21 @@
                         $workplaces = array_column($json_workplaces, 'id');
                         $teachers = array_column($json_teachers, 'id');
                         $students = array_column($json_students, 'id');
+                        $lesson_types = array_column($json_lessons_types, 'id');
+                        $lesson_durations = array_column($json_lessons_durations, 'id');
     
                         $found_workplace = array_search(strtolower($item['workplace']), array_map('strtolower',$workplaces));
                         $found_teacher = array_search(strtolower($item['teacher']), array_map('strtolower',$teachers));
                         $found_student = array_search(strtolower($item['student']), array_map('strtolower',$students));
+                        $found_lesson_type = array_search(strtolower($item['lesson-type']), array_map('strtolower',$lesson_types));
+                        $found_lesson_duration = array_search(strtolower($item['duration']), array_map('strtolower',$lesson_durations));
 
 ?>
-                        <option value="<?php echo $item["id"]; ?>" required ><?php echo $item["lesson-date"]; ?> - <?php echo $json_workplaces[$found_workplace]["type"]; ?> - <?php echo $json_teachers[$found_teacher]["givenname"]; ?> <?php echo $json_teachers[$found_teacher]["surname"]; ?> (<?php echo $json_teachers[$found_teacher]["title"]; ?>) - <?php echo $json_students[$found_student]["givenname"];?> <?php echo $json_students[$found_student]["surname"];?> (<?php echo $json_students[$found_student]["title"];?>)</option>
+                        <option value="<?php echo $item["id"]; ?>" required ><?php echo $item["lesson-date"]; ?> - <?php echo $json_workplaces[$found_workplace]["type"]; ?> - <?php echo $json_teachers[$found_teacher]["givenname"]; ?> <?php echo $json_teachers[$found_teacher]["surname"]; ?> (<?php echo $json_teachers[$found_teacher]["title"]; ?>) - <?php echo $json_students[$found_student]["givenname"];?> <?php echo $json_students[$found_student]["surname"];?> (<?php echo $json_students[$found_student]["title"];?>) - <?php echo $json_lessons_types[$found_lesson_type]["type"];?> - <?php echo $json_lessons_durations[$found_lesson_duration]["duration"];?></option>
 <?php           
                       }
 ?>
                     </select>
-                  </div>
-              </div>
-
-              <div class="form-group ">
-                  <label class="control-label col-md-2">Élève</label>
-                  <div class="col-md-3 col-xs-11">
-
-<?php
-                  if( $_SESSION['user-type-en'] == "student" ){
-?>
-                    <input disabled required class="form-control form-control-inline input-medium" name="student" id="student" size="16" type="text" value="<?php echo $_SESSION['user-informations']["givenname"]; ?> <?php echo $_SESSION['user-informations']["surname"]; ?> (<?php echo $_SESSION['user-informations']["title"]; ?>)" />
-<?php
-                  }else{
-?>
-
-                    <select class="form-control" required name="student" id="student" >
-
-<?php 
-
-                      foreach($json_students as $item) {
-
-                        $itemChecked = "";
-
-                        if( $item["default"] ){
-                          $itemChecked = "checked";
-                        }
-
-?>
-                        <option value="<?php echo $item["id"]; ?>" required ><?php echo $item["givenname"]; ?> <?php echo $item["surname"]; ?> (<?php echo $item["title"];?>)</option>
-<?php           
-                      }
-?>
-                    </select>
-<?php
-                  }
-?>
                   </div>
               </div>
 
@@ -128,76 +98,7 @@
 ?>
                 </div>
               </div>
-
-              <div class="form-group">
-                
-                <label class="control-label col-md-2">Lieu</label>
-                <div class="col-md-3 col-xs-11">
-  <?php 
-
-              foreach($json_workplaces as $item) {
-
-                $itemChecked = "";
-
-                if( $item["default"] ){
-                  $itemChecked = "checked";
-                }
-      
-  ?>
-                <div class="radio">
-                  <label>
-                    <input required type="radio" name="workplaces" id="workplaces_<?php echo $item["id"]; ?>" value="<?php echo $item["id"]; ?>" <?php echo $itemChecked; ?> >
-                    <?php echo $item["type"]; ?>
-                    </label>
-                </div>
-  <?php           
-              }
-  ?>
-                </div>
-
-              </div>
-      
-                <div class="form-group">
-                    <label class="control-label col-md-2">Date de l'échauffement</label>
-                    <div class="col-md-3 col-xs-11">
-                      <input required class="form-control form-control-inline input-medium default-date-picker" name="exercise-date" id="exercise-date" size="16" type="text" value="<?php echo date("m-d-Y"); ?>" >
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                  <label class="control-label col-md-2">Professeur</label>
-                  <div class="col-md-3 col-xs-11">
-<?php
-                  if( $_SESSION['user-type-en'] == "teacher" ){
-?>
-                  <select class="form-control" required name="teacher" id="teacher" >
-                    <option value="<?php echo $_SESSION['user-informations']["id"]; ?>" required ><?php echo $_SESSION['user-informations']["givenname"]; ?> <?php echo $_SESSION['user-informations']["surname"]; ?> (<?php echo $_SESSION['user-informations']["title"];?>)</option>
-                  </select>
-<?php
-                  }else{
-?>
-                    <select class="form-control" required name="teacher" id="teacher" >
-<?php 
-
-                      foreach($json_teachers as $item) {
-
-                        $itemChecked = "";
-
-                        if( $item["default"] ){
-                          $itemChecked = "checked";
-                        }
-?>
-                        <option value="<?php echo $item["id"]; ?>" required ><?php echo $item["givenname"]; ?> <?php echo $item["surname"]; ?> (<?php echo $item["title"];?>)</option>
-<?php           
-                      }
-?>
-                    </select>
-<?php
-                  }
-?>
-                  </div>
-                </div>
-                
+                 
                 <div class="form-group">
                   <div class="col-lg-offset-2 col-lg-10">
                     <button class="btn btn-theme" type="submit">Ajout</button>
@@ -213,7 +114,7 @@
 
 <?php
 
-    //region PAYMENT TYPES
+    //region ACTIVITIES
 
         // Read the JSON file
         $json = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/databases/activities.json");
@@ -231,7 +132,7 @@
             die('Error decoding the JSON file');
         }
 
-    //endregion PAYMENT TYPES
+    //endregion ACTIVITIES
 
 ?>
         
@@ -245,6 +146,8 @@
                   <thead>
                     <tr>
                       <th>Date</th>
+                      <th>Type de cours</th>
+                      <th>Durée</th>
                       <th>Exercice</th>
                       <th>Lieu</th>
                       <th>Professeur</th>
@@ -260,17 +163,34 @@
                     $teachers = array_column($json_teachers, 'id');
                     $students = array_column($json_students, 'id');
                     $exercises = array_column($json_exercises, 'id');
-
-                    $found_workplace = array_search(strtolower($item['workplace']), array_map('strtolower',$workplaces));
-
-                    $found_teacher = array_search(strtolower($item['teacher']), array_map('strtolower',$teachers));
-
-                    $found_student = array_search(strtolower($item['student']), array_map('strtolower',$students));
+                    $lessons = array_column($json_lessons, 'id');
+                    $lesson_types = array_column($json_lessons_types, 'id');
+                    $lesson_durations = array_column($json_lessons_durations, 'id');
 
                     $found_exercise = array_search(strtolower($item['exercise']), array_map('strtolower',$exercises));
+
+                    $found_lesson = array_search(strtolower($item['lesson']), array_map('strtolower',$lessons));
+
+                    if( isset($found_lesson) && $found_lesson !== false ) {
+
+                      $lesson = $json_lessons[$found_lesson];
+
+                      $found_workplace = array_search(strtolower($lesson['workplace']), array_map('strtolower',$workplaces));
+
+                      $found_teacher = array_search(strtolower($lesson['teacher']), array_map('strtolower',$teachers));
+  
+                      $found_student = array_search(strtolower($lesson['student']), array_map('strtolower',$students));
+  
+                      $found_lesson_type = array_search(strtolower($lesson['lesson-type']), array_map('strtolower',$lesson_types));
+
+                      $found_lesson_duration = array_search(strtolower($lesson['duration']), array_map('strtolower',$lesson_durations));
+
+                    }
   ?>
                     <tr>
-                        <td><?php echo $item["exercise-date"]; ?></td>
+                        <td><?php echo $lesson["lesson-date"]; ?></td>
+                        <td><?php echo $json_lessons_types[$found_lesson_type]["type"]; ?></td>
+                        <td><?php echo $json_lessons_durations[$found_lesson_duration]["duration"]; ?></td>
                         <td><?php echo $json_exercises[$found_exercise]["exercise-name"]; ?></td>
                         <td><?php echo $json_workplaces[$found_workplace]["type"]; ?></td>
                         <td><?php echo $json_teachers[$found_teacher]["givenname"]; ?> <?php echo $json_teachers[$found_teacher]["surname"]; ?></td>

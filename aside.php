@@ -5,9 +5,9 @@
         <p class="centered"><a href="profile.html"><img src="<?php echo $_SESSION['user-informations']['avatar']; ?>" class="img-circle" width="80"></a></p>
         <h5 class="centered"><?php echo $_SESSION['user-informations']['givenname']; ?> <?php echo $_SESSION['user-informations']['surname']; ?><br/> <?php echo $_SESSION['user-type']; ?></h5>
         <li class="mt">
-        <a class="active" href="index.php">
-            <i class="fa fa-dashboard"></i>
-            <span>Tableau de bord</span>
+            <a class="active" href="index.php">
+                <i class="fa fa-dashboard"></i>
+                <span>Tableau de bord</span>
             </a>
         </li>
         <li class="sub-menu hide disabled_theo">
@@ -44,7 +44,14 @@
                 <li><a href="warm_ups.php">Echauffements</a></li>
                 <li><a href="improvisations.php">Improvisations</a></li>
                 <li><a href="exercises.php">Exercices</a></li>
+                <li><a href="sheets.php">Fiches</a></li>
             </ul>
+        </li>
+        <li class="">
+            <a class="active" href="sheets.php">
+                <i class="fa fa-dashboard"></i>
+                <span>Cours - Fiches</span>
+            </a>
         </li>
         <li class="sub-menu hide disabled_theo">
             <a href="javascript:;">
