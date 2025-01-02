@@ -37,7 +37,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Fiches</h3>
+        <h3><i class="fa fa-angle-right"></i> Fiches sur les chansons</h3>
 
         <div class="row mt">
           

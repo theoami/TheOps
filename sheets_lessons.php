@@ -4,9 +4,9 @@
     session_start();
   } 
 
-  require_once($_SERVER['DOCUMENT_ROOT'] . "/databases/access.php");
-
   //print_r($_SERVER);
+
+  require_once($_SERVER['DOCUMENT_ROOT'] . "/databases/access.php");
 
 ?>
 
@@ -37,7 +37,7 @@
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> Fiches</h3>
+        <h3><i class="fa fa-angle-right"></i> Fiches sur les leçons</h3>
 
         <div class="row mt">
           
@@ -90,6 +90,7 @@
           </div>
 
         </div>
+
         
         <div class="row">
           
@@ -97,6 +98,19 @@
 
             <div class="form-panel">
 
+              <a href="create_pdf.php" target="_blank" ><button class="btn btn-theme" type="">PDF</button></a>
+
+            </div>
+
+          </div>
+
+        </div>
+        
+        <div class="row">
+          
+          <div class="col-lg-12">
+
+            <div class="form-panel">
 <?php 
 
               $item = $json_lessons[0];

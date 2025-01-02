@@ -71,7 +71,7 @@
             </a>
         </li>
         <li class="">
-            <a class="" href="sheets.php">
+            <a class="" href="sheets_lessons.php">
                 <i class="fa fa-th"></i>
                 <span>Cours - Fiches de cours</span>
             </a>
