@@ -43,7 +43,7 @@
           
           <div class="col-lg-12">
             <div class="form-panel">
-            <form action="process_form.php" method="POST" class="form-horizontal style-form">
+              <form action="process_form.php" method="POST" class="form-horizontal style-form">
 
               <input type="hidden" value="warm-up" id="form-type" name="form-type" />
                 
