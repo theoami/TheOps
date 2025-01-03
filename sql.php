@@ -1,9 +1,39 @@
 <?php
 
-    $database = "theops";
+  if ( empty(session_id()) ){
+    session_start();
+  } 
+
+  require_once($_SERVER['DOCUMENT_ROOT'] . "/databases/access.php");
+
+  //print_r($_SERVER);
+
+?>
+
+<?php
+
+    if( $_SERVER["SERVER_NAME"] == "theops" ){
+
+        $dbName = "theops";
+        $dbServer = "localhost";
+        $dbUser = "root";
+        $dbPassword = "";
+
+    }elseif( $_SERVER["SERVER_NAME"] == "theops.ovh" ){
+
+        $dbName = "theopsmwrs";
+        $dbServer = "theopsmwrs.mysql.db";
+        $dbUser = "theopsmwrs";
+        $dbPassword = "cbvFrs9DTXSBe23tTUhWteY8ZpPZHu";
+
+    }else{
+
+        throw new Exception('Serveur inconnu');
+
+    }
 
     try{
-        $mysqlClient = new PDO('mysql:host=localhost;dbname='. $database .';charset=utf8', 'root', '');
+        $mysqlClient = new PDO('mysql:host='.$dbServer.';dbname='. $dbName .';charset=utf8', $dbUser, $dbPassword);
     }catch (Exception $e){
         die('Erreur : ' . $e->getMessage());
     }
@@ -35,7 +65,7 @@
     $lessonTypes = $lessonTypesStatement->fetchAll();
 
     // On récupère tout le contenu de la table lesson_durations
-    $sqlQuery = 'SELECT * FROM lesson_durations';
+    $sqlQuery = 'SELECT * FROM lesson_durations ORDER BY duration';
     $lessonDurationsStatement = $mysqlClient->prepare($sqlQuery);
     $lessonDurationsStatement->execute();
     $lessonDurations = $lessonDurationsStatement->fetchAll();
@@ -57,6 +87,24 @@
     $warmsupStatement = $mysqlClient->prepare($sqlQuery);
     $warmsupStatement->execute();
     $warmsup = $warmsupStatement->fetchAll();
+
+    // On récupère tout le contenu de la vue v_improvisations
+    $sqlQuery = 'SELECT * FROM `v_improvisations`';
+    $improvisationsStatement = $mysqlClient->prepare($sqlQuery);
+    $improvisationsStatement->execute();
+    $improvisations = $improvisationsStatement->fetchAll();
+
+    // On récupère tout le contenu de la vue v_lessons
+    $sqlQuery = 'SELECT * FROM `v_lessons`';
+    $lessonsStatement = $mysqlClient->prepare($sqlQuery);
+    $lessonsStatement->execute();
+    $lessons = $lessonsStatement->fetchAll();
+
+    // On récupère tout le contenu de la vue types_of_exercise
+    $sqlQuery = 'SELECT * FROM `types_of_exercise`';
+    $typesOfExerciseStatement = $mysqlClient->prepare($sqlQuery);
+    $typesOfExerciseStatement->execute();
+    $typesOfExercise = $typesOfExerciseStatement->fetchAll();
     
 ?>
 
@@ -101,7 +149,7 @@
             
             <div class="row">
                 <div class="col-lg-2">
-                    <h1 style="text-transform: uppercase;"><span style="color:#ffffff;">The</span><span style="color:#4ECDC4;">Ops</span></h1>
+                    <h1 style="text-transform: uppercase;"><span style="color:#ffffff;">The</span><span style="color:#4ECDC4;">Ops</span><span style="color:#ffeb3b;">Musique</span></h1>
                 </div>
                 <div class="col-lg-10">
                 </div>            
@@ -115,9 +163,8 @@
                         <div class="panel-body ">
                             <ul class="nav nav-pills nav-stacked" id="nav-menu">
                                 <li class="active" id="menu-home" ><a href="#">Accueil</a></li>
-                                <li id="menu-teachers" ><a href="#">Professeurs</a></li>
-                                <li id="menu-students" ><a href="#">Élèves</a></li>
-                                <li id="menu-warmups" ><a href="#">Echauffements</a></li>
+                                <li id="menu-persons" ><a href="#">Personnes</a></li>
+                                <li id="menu-lessons" ><a href="#">Leçons</a></li>
                                 <li id="menu-exercises" ><a href="#">Exercices</a></li>
                                 <li id="menu-parameters" ><a href="#">Paramètres</a></li>
                             </ul>
@@ -133,14 +180,56 @@
                     </div>
                 </div>
 
-                <div class="col-lg-10" style="display:none;" id="menu-content-warmups" >
+                <div class="col-lg-10" style="display:none;" id="menu-content-lessons" >
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Leçons</div>
+                        <div class="panel-body">
+                            <table class="table table-striped" >
+                                <thead>
+                                    <tr>
+                                        <th width="8%" >Date</th>
+                                        <th width="10%" >Lieu</th>
+                                        <th width="14%" >Professeur</th>
+                                        <th width="14%" >Élève</th>
+                                        <th width="8%" >Type de leçon</th>
+                                        <th width="6%" >Durée</th>
+                                        <th>Commentaires</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+<?php
+                        // On affiche chaque lieu de cours un à un
+    foreach ($lessons as $lesson) {
+
+?>
+                                    <tr>
+                                        <td><?php echo $lesson['lesson_date']; ?></td>
+                                        <td><?php echo $lesson['workplace_name']; ?></td>
+                                        <td><?php echo $lesson['teacher_givenname']; ?> <?php echo $lesson['teacher_surname']; ?> (<?php echo $lesson['teacher_title_abbreviation']; ?>)</td>
+                                        <td><?php echo $lesson['student_givenname']; ?> <?php echo $lesson['student_surname']; ?> (<?php echo $lesson['student_title_abbreviation']; ?>)</td>
+                                        <td><?php echo $lesson['lesson_type']; ?></td>
+                                        <td><?php echo $lesson['duration']; ?></td>
+                                        <td><?php echo $lesson['comment']; ?></td>
+                                    </tr>
+<?php
+
+    }
+
+?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-10" style="display:none;" id="menu-content-exercises" >
                     <div class="panel panel-primary">
                         <div class="panel-heading">Echauffements</div>
                         <div class="panel-body">
                             <table class="table table-striped" >
                                 <thead>
                                     <tr>
-                                        <th>Echauffement</th>
+                                        <th width="10%" >Echauffement</th>
                                         <th>Explications</th>
                                     </tr>
                                 </thead>
@@ -163,16 +252,94 @@
                             </table>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-lg-10" style="display:none;" id="menu-content-exercises" >
                     <div class="panel panel-primary">
-                        <div class="panel-heading">Exercices</div>
-                        <div class="panel-body"></div>
+                        <div class="panel-heading">Improvisations</div>
+                        <div class="panel-body">
+                            <table class="table table-striped" >
+                                <thead>
+                                    <tr>
+                                        <th width="10%" >Improvisation</th>
+                                        <th>Explications</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+<?php
+                        // On affiche chaque lieu de cours un à un
+    foreach ($improvisations as $improvisation) {
+
+?>
+                                    <tr>
+                                        <td><?php echo $improvisation['exercise_name']; ?></td>
+                                        <td><?php echo nl2br($improvisation['description']); ?></td>
+                                    </tr>
+<?php
+
+    }
+
+?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Ajout d'un exercice</div>
+                        <div class="panel-body">
+                            <div class="form-panel">
+                                <form action="process_form.php" method="POST" class="form-horizontal style-form">
+
+                                    <div class="input-group col-xs-11 col-sm-11 col-md-6 col-lg-12">
+                                        
+                                        <span class="input-group-addon">Type</span>
+                                        <div class="col-md-3 col-xs-11">
+                            <?php 
+
+                                        foreach($typesOfExercise as $typeOfExercise) {
+
+                                        $itemChecked = "";
+
+                                        if( $typeOfExercise["id"] == 1 ){
+                                            $itemChecked = "checked";
+                                        }
+                                
+                            ?>
+                                        <div class="radio">
+                                            <label>
+                                            <input required type="radio" name="types_of_exercise" id="types_of_exercise_<?php echo $typeOfExercise["id"]; ?>" value="<?php echo $typeOfExercise["id"]; ?>" <?php echo $itemChecked; ?> >
+                                            <?php echo $typeOfExercise["type"]; ?>
+                                            </label>
+                                        </div>
+                            <?php           
+                                        }
+                            ?>
+                                        </div>
+
+                                    </div>
+                                        
+                                    <div class="input-group col-xs-11 col-sm-11 col-md-6 col-lg-12">
+                                        <span class="input-group-addon">Echauffement</span>
+                                        <input id="msg" type="text" class="form-control" name="msg" placeholder="Nom de l'échauffement" />
+                                    </div>
+
+                                    <div class="input-group col-xs-11 col-sm-11 col-md-6 col-lg-12">
+
+                                        <span class="input-group-addon">Description</span>
+                                        <textarea class="form-control" style="resize:none;" id="story" name="story" ></textarea>
+                                
+                                    </div>
+                                                    
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10 mt-2">
+                                            <button class="btn btn-theme" type="submit">Ajout</button>
+                                        </div>
+                                    </div>
+                                    
+                                </form>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="col-lg-10" style="display:none;" id="menu-content-teachers" >
+                <div class="col-lg-10" style="display:none;" id="menu-content-persons" >
                     <div class="panel panel-primary">
                         <div class="panel-heading">Professeurs</div>
                         <div class="panel-body">
@@ -180,9 +347,9 @@
                                 <thead>
                                     <tr>
                                         <th width="4%" >ID</th>
-                                        <th>Titre</th>
-                                        <th>Prénom</th>
-                                        <th>Nom</th>
+                                        <th width="4%" >Titre</th>
+                                        <th width="46%" >Prénom</th>
+                                        <th width="46%" >Nom</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -193,7 +360,7 @@
 ?>
                                     <tr>
                                         <td><?php echo $teacher['user_id']; ?></td>
-                                        <td><?php echo $teacher['abbreviation']; ?></td>
+                                        <td><?php echo $teacher['title_abbreviation']; ?></td>
                                         <td><?php echo $teacher['givenname']; ?></td>
                                         <td><?php echo $teacher['surname']; ?></td>
                                     </tr>
@@ -206,8 +373,6 @@
                             </table>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-10" style="display:none;" id="menu-content-students" >
                     <div class="panel panel-primary">
                         <div class="panel-heading">Élèves</div>
                         <div class="panel-body">
@@ -215,9 +380,9 @@
                                 <thead>
                                     <tr>
                                         <th width="4%" >ID</th>
-                                        <th>Titre</th>
-                                        <th>Prénom</th>
-                                        <th>Nom</th>
+                                        <th width="4%" >Titre</th>
+                                        <th width="46%" >Prénom</th>
+                                        <th width="46%" >Nom</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -228,7 +393,7 @@
 ?>
                                     <tr>
                                         <td><?php echo $student['user_id']; ?></td>
-                                        <td><?php echo $student['abbreviation']; ?></td>
+                                        <td><?php echo $student['title_abbreviation']; ?></td>
                                         <td><?php echo $student['givenname']; ?></td>
                                         <td><?php echo $student['surname']; ?></td>
                                     </tr>
@@ -398,6 +563,7 @@
                     </div>
 
                 </div>
+
             </div>
 
         </div>
