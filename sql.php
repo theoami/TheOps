@@ -1,17 +1,5 @@
 <?php
 
-  if ( empty(session_id()) ){
-    session_start();
-  } 
-
-  require_once($_SERVER['DOCUMENT_ROOT'] . "/databases/access.php");
-
-  //print_r($_SERVER);
-
-?>
-
-<?php
-
     if( $_SERVER["SERVER_NAME"] == "theops" ){
 
         $dbName = "theops";
